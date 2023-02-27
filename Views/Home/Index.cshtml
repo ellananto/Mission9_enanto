@@ -3,21 +3,21 @@
 
 @model BooksViewModel
 
-<h1>Welcome to the Bookstore Website.</h1>
+<h1 class="text-center">Welcome to the Bookstore Website.</h1>
 
 @foreach (Books x in Model.Books)
 {
-    <h3>@x.Title</h3>
-    <ul>
-        <li>By: @x.Author</li>
-        <li>Publisher: @x.Publisher</li>
-        <li>ISBN: @x.Isbn</li>
-        <li>Classification: @x.Classification</li>
-        <li>Category: @x.Category</li>
-        <li>Number of Pages: @x.PageCount</li>
-        <li>Price: @x.Price</li>
+    <h3 class="text-black-50">@x.Title</h3>
+    <ul class="text-body">
+        <li class="list-group-item">By: @x.Author</li>
+        <li class="list-group-item">Publisher: @x.Publisher</li>
+        <li class="list-group-item">ISBN: @x.Isbn</li>
+        <li class="list-group-item">Classification: @x.Classification</li>
+        <li class="list-group-item">Category: @x.Category</li>
+        <li class="list-group-item">Number of Pages: @x.PageCount</li>
+        <li class="list-group-item">Price: @x.Price</li>
     </ul>
     <br />
 }
 
-<div page-blah="@Model.PageInfo" page-action="Index"></div>
+<div page-blah="@Model.PageInfo" page-action="Index" class="page-link"></div>

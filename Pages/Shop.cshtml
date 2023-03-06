@@ -1,0 +1,39 @@
+﻿@page
+@model Mission9.Pages.ShopModel
+@{
+}
+<!--Extra Bootstrap #1-->
+<h2 class="shadow-lg p-3 mb-5 bg-white rounded text-dark text-lg-center">Your Cart:</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.basket.Items)
+        {
+            <tr>
+                <td>@i.Book.Title</td>
+                <td>@i.Quantity</td>
+                <td>25</td>
+                <td>@(i.Quantity * 25)</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <!--the "c" means currency-->
+            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping!</a>
+</div>

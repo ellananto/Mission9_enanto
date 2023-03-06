@@ -10,14 +10,19 @@
     <div class="bg-dark text-white p-2">
         <span class="navbar-brand ml-2">Welcome to the BookStore!</span>
     </div>
+    <!--Extra Bootstrap #2-->
+    <div>
+        <img class="img-fluid w-100 h-50"src="~/lib/bookshelf-with-children-s-books-literature-for-boys-children-s-reading-colorful-books-covers-banner-for-school-library-bookstore-fair-festival-vector.jpg" />
+    </div>
     <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            Put something useful here later
+        <div id="types" class="col-3">
+            <vc:types></vc:types>
         </div>
         <div class="col-9">
             <div>
                 @RenderBody()
             </div>
         </div>
+    </div>
 </body>
 </html>

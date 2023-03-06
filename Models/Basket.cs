@@ -34,7 +34,7 @@ namespace Mission9.Models
         public double CalculateTotal()
         {
             // for this project, we're just saying that every donation is 25 dollars
-            double sum = Items.Sum(x => x.Quantity * 25);
+            double sum = Items.Sum(x => x.Quantity * x.Book.Price);
             return sum;
         }
 

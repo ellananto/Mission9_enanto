@@ -3,11 +3,13 @@
 
 @model BooksViewModel
 
+<!--Loop to display each Book in the database-->
 @foreach (Books x in Model.Books)
 {
     <partial name="ProjectSummary" model="x" />
 }
 
+<!--Navigation Between Pages-->
 <div page-blah="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"
      page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>

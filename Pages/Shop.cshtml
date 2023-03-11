@@ -5,7 +5,10 @@
 <!--Extra Bootstrap #1-->
 <h2 class="shadow-lg p-3 mb-5 bg-white rounded text-dark text-lg-center">Your Cart:</h2>
 
+<!--Table for Displaying Cart Info-->
 <table class="table table-bordered table-striped">
+
+    <!--Table Headers-->
     <thead>
         <tr>
             <th>Item</th>
@@ -14,6 +17,8 @@
             <th>Subtotal</th>
         </tr>
     </thead>
+    
+    <!--Table Body Containing Info of each Item-->
     <tbody>
         @foreach (var i in Model.basket.Items)
         {
@@ -23,6 +28,7 @@
             <td>@i.Book.Price</td>
             <td>@(i.Quantity * i.Book.Price)</td>
 
+            <!--Remove Button and Hidden Inputs-->
             <td class="text-center">
                 <form method="post" asp-page-handler="Remove">
                     <input type="hidden" name="BookId" value="@i.Book.BookId" />
@@ -33,6 +39,8 @@
         </tr>
         }
     </tbody>
+
+    <!--Footer containing the Total-->
     <tfoot>
         <tr>
             <td colspan="3">Total:</td>
@@ -40,8 +48,10 @@
             <td>@Model.basket.CalculateTotal().ToString("c")</td>
         </tr>
     </tfoot>
+
 </table>
 
+<!--Buttons to Continue Shopping or Go to Checkout-->
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping!</a>
     <a class="btn btn-primary" asp-controller="Purchase" asp-action="Checkout">Checkout</a>

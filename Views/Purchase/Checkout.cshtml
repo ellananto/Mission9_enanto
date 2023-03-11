@@ -2,19 +2,24 @@
 }
 @model Purchase
 
+<!--Upper Header for Order Information-->
 <h2 class="text-md-center">Order Confirmation</h2>
 <p class="text-center">Please enter your details below to complete your purchase.</p>
 
+<!--form to submit order-->
 <form method="post" asp-controller="Purchase" asp-action="Checkout">
 
+    <!--validation summary div tag-->
     <div asp-validation-summary="All"></div>
 
+    <!-- Name Info-->
     <h4>Ship To:</h4>
     <div class="form-group">
         <label asp-for="Name">Name: </label><input asp-for="Name" class="form-control" />
     </div>
     <br />
 
+    <!--Address Info-->
     <h4>Address</h4>
     <div class="form-group">
         <label asp-for="AddressLine1">Address Line 1</label>
@@ -57,6 +62,7 @@
         </label>
     </div>
 
+    <!--Submit Order Button-->
     <div class="float-end">
         <input class="btn btn-primary" type="submit" value="Place Order" />
     </div>

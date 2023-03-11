@@ -4,6 +4,7 @@
 @model Books
 
 <div class="card card-outline-primary m-1 p-1">
+    <!--Show Each Book with Title and Price-->
     <div class="bg-faded p-1">
         <h4>
             @Model.Title
@@ -12,6 +13,8 @@
             </span>
         </h4>
     </div>
+
+    <!--Display all other book information-->
     <div class="card-text p-1">Author: @Model.Author</div>
     <div class="card-text p-1">Publisher: @Model.Publisher</div>
     <div class="card-text p-1">ISBN: @Model.Isbn</div>
@@ -19,6 +22,7 @@
     <div class="card-text p-1">Category: @Model.Category</div>
     <div class="card-text p-1">Number of Pages: @Model.PageCount</div>
 
+    <!--Add to Cart Button-->
     <form method="post" asp-page="/Shop">
         <input type="hidden" asp-for="@Model.BookId" />
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
@@ -26,4 +30,5 @@
             <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
         </span>
     </form>
+
 </div>

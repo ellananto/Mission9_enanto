@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace Mission9.Models
     {
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
         // to be able to add an item to the basket (know which project we're donating to, and how much the donation is
-        public void AddItem(Books book, int qty)
+        public virtual void AddItem(Books book, int qty)
         {
             // go find the project associated with that ID passed in
             BasketLineItem line = Items.Where(p => p.Book.BookId == book.BookId)
@@ -31,6 +32,14 @@ namespace Mission9.Models
                 line.Quantity += qty;
             }
         }
+        public virtual void RemoveItem(Books book)
+        {
+            Items.RemoveAll(x => x.Book.BookId == book.BookId);
+        }
+        public virtual void ClearBasket ()
+        {
+            Items.Clear();
+        }
         public double CalculateTotal()
         {
             // for this project, we're just saying that every donation is 25 dollars
@@ -42,6 +51,7 @@ namespace Mission9.Models
 
     public class BasketLineItem
     {
+        [Key]
         public int LineID { get; set; }
         public Books Book { get; set; }
         public int Quantity { get; set; }

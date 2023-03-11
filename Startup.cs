@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Mission9.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Mission9
 {
@@ -31,9 +32,12 @@ namespace Mission9
                 options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
             });
             services.AddScoped<IBookRepository, EFBookRepository>();
+            services.AddScoped<IPurchaseRepository, EFPurchasesRepository>();
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
